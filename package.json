@@ -1,0 +1,19 @@
+{
+  "name": "mentor-program",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PiersZhang/node-mentor-program.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PiersZhang/node-mentor-program/issues"
+  },
+  "homepage": "https://github.com/PiersZhang/node-mentor-program#readme"
+}
