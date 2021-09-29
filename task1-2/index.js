@@ -45,6 +45,7 @@ const transformCSVToTxt = () => {
         tips.success('transform', txt)
     })
 }
+
 /**
  * load the content of the csv file line by line
  */
