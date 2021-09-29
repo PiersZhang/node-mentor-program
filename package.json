@@ -18,7 +18,15 @@
   },
   "homepage": "https://github.com/PiersZhang/node-mentor-program#readme",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
     "csvtojson": "^2.0.10",
     "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }
