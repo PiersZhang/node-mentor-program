@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "task1-1": "nodemon ./task1-1/index.js",
+    "task1-2": "nodemon ./task1-2/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/PiersZhang/node-mentor-program#readme",
   "devDependencies": {
+    "csvtojson": "^2.0.10",
     "nodemon": "^2.0.12"
   }
 }
