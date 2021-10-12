@@ -6,7 +6,7 @@
   "scripts": {
     "task1-1": "nodemon ./task1-1/index.js",
     "task1-2": "nodemon ./task1-2/index.js",
-    "task1-3": "nodemon ./task1-3/index.js",
+    "task1-3": "babel task1-3 -d task1-3-babel & nodemon ./task1-3-babel/index.js",
     "lint": "eslint --ignore-path .gitignore --ext .ts,.js .",
     "lint:fix": "yarn lint --fix"
   },

@@ -58,17 +58,17 @@ const transformCSVToTxtByline = () => {
     const arr = [];
     rl.on('line', (line) => {
         arr.push(line.split(','));
-    });
-    rl.on('close', () => {
-        const [titleArr, ...contentArr] = arr;
-        contentArr.map((item, num) => {
-            const book = {};
-            titleArr.map((obj, index) => {
-                book[obj] = item[index];
+        if (arr.length >= 2) {
+            const [titleArr, ...contentArr] = arr;
+            contentArr.map((item) => {
+                const book = {};
+                titleArr.map((obj, index) => {
+                    book[obj] = item[index];
+                });
+                output.write(`${JSON.stringify(book)} \r\n`);
             });
-            output.write(JSON.stringify(book) + (contentArr.length <= num + 1 ? '' : '\r\n'));
-            return book;
-        });
+            arr.length = 1;
+        }
     });
 };
 
