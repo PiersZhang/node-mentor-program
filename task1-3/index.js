@@ -67,7 +67,7 @@ const transformCSVToTxtByline = () => {
       titleArr.forEach((item, index) => {
         book[item] = contentArr[index];
       });
-      output.write(`${JSON.stringify(book)} \r\n`);
+      output.write(`${JSON.stringify(book)}\r\n`);
     }
     flag = false;
   });
