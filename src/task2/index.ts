@@ -5,6 +5,11 @@ import users from './mock';
 
 const router = express.Router();
 
+
+router.post('/user', userValidation, (req, res) => {
+  res.send('success');
+});
+
 router.get('/user/:id', idValidation, (req, res) => {
   const { id } = req.params;
   const user = users.find((item) => {
@@ -13,8 +18,16 @@ router.get('/user/:id', idValidation, (req, res) => {
   res.send(user);
 });
 
-router.post('/user', userValidation, (req, res) => {
+router.put('/user', userValidation, (req, res) => {
   res.send('success');
+});
+
+router.delete('/user/:id', idValidation, (req, res) => {
+  const { id } = req.params;
+  const user = users.filter((item) => {
+    return item.id !== id;
+  });
+  res.send(user);
 });
 
 router.get('*', (req, res, next) => {
