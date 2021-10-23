@@ -1,4 +1,4 @@
-import { validate, IsString, IsNumber, IsBoolean, ValidationError } from 'class-validator';
+import { validate, IsString, IsNumber, IsBoolean, ValidationError, Min, Max, IsAlphanumeric } from 'class-validator';
 import { Request, Response, NextFunction } from 'express';
 import { HttpException, BadRequest } from '../http-exception';
 import { IUser } from './index.interface';
@@ -18,9 +18,12 @@ class User {
   login: string;
 
   @IsString()
+  @IsAlphanumeric()
   password: string;
 
   @IsNumber()
+  @Min(4)
+  @Max(120)
   age: number;
 
   @IsBoolean()
