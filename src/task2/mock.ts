@@ -1,6 +1,7 @@
 import { IUser } from './index.interface';
+import { concat } from 'lodash';
 
-const users: IUser[] = [
+let users: IUser[] = [
   {
     id: '1',
     login: 'piers1',
@@ -34,4 +35,51 @@ const users: IUser[] = [
   }
 ];
 
-export default users;
+const getAll = (): IUser[] => {
+  return users;
+};
+
+const findItem = (id: string): IUser | undefined => {
+  const user = users.find((item) => {
+    return item.id === id;
+  });
+  return user;
+};
+
+const findItemByName = (login: string):  IUser | undefined => {
+  const user = users.find((item) => {
+    return item.login === login;
+  });
+  return user;
+};
+
+const deleteItem = (id: string): void => {
+  users.forEach((item) => {
+    if (item.id === id) {
+      item.isDeleted = true;
+    }
+  });
+};
+
+const putItem = (user: IUser): void => {
+  users.forEach((item) => {
+    if (item.id === user.id) {
+      item.login = user.login;
+      item.password = user.password;
+      item.age = user.age;
+    }
+  });
+};
+
+const saveItem = (user: IUser): void => {
+  users = concat(users, user);
+};
+
+export {
+  getAll,
+  saveItem,
+  findItem,
+  deleteItem,
+  putItem,
+  findItemByName
+};

@@ -1,18 +1,14 @@
-import { validate, IsString, IsNumber, IsBoolean, ValidationError, Min, Max, IsAlphanumeric } from 'class-validator';
+import { validate, IsString, IsNumber, ValidationError, Min, Max, IsAlphanumeric } from 'class-validator';
 import { Request, Response, NextFunction } from 'express';
 import { HttpException, BadRequest } from '../http-exception';
-import { IUser } from './index.interface';
+import { IUserInfo } from './index.interface';
 
 class User {
-  constructor(user: IUser) {
-    this.id = user?.id;
+  constructor(user: IUserInfo) {
     this.login = user?.login;
     this.password = user?.password;
     this.age = user?.age;
-    this.isDeleted = user?.isDeleted;
   }
-  @IsString()
-  id: string;
 
   @IsString()
   login: string;
@@ -25,19 +21,12 @@ class User {
   @Min(4)
   @Max(120)
   age: number;
-
-  @IsBoolean()
-  isDeleted: boolean;
 }
 const userValidation = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   validate(new User(req.body)).then((errors: ValidationError[]) => {
-    console.log('11111');
     if (errors.length > 0) {
-      console.log('222');
-      console.log(new HttpException());
       return next(new HttpException({ status: 400, message: 'params validate wrong' }));
     }
-    console.log('333');
     next();
   });
 };

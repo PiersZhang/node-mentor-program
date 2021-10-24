@@ -1,8 +1,10 @@
-interface IUser {
-  id: string,
+interface IUserInfo{
   login: string,
   password: string,
   age: number,
+}
+interface IUser extends IUserInfo {
+  id: string,
   isDeleted: boolean
 }
-export { IUser };
+export { IUserInfo, IUser };
