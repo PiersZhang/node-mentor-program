@@ -41,7 +41,7 @@ const getAll = (): IUser[] => {
 
 const findItem = (id: string): IUser | undefined => {
   const user = users.find((item) => {
-    return item.id === id;
+    return !item.isDeleted && item.id === id;
   });
   return user;
 };

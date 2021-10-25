@@ -16,7 +16,7 @@ const saveUser = (user: IUserInfo, req: express.Request, res: express.Response, 
     isDeleted: false
   });
   saveItem(_user);
-  res.status(200).send(_user).end();
+  res.status(201).send(_user).end();
 };
 
 const putUser = (user: IUser, req: express.Request, res: express.Response, next: express.NextFunction): void => {
