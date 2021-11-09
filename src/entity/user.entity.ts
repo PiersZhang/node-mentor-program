@@ -4,18 +4,18 @@ import { IUser } from '../interface/user.interface';
 
 @Table
 class User extends Model {
-  constructor() {
+  constructor(user?: IUser) {
     super();
-    this.id = -1;
-    this.login = '';
-    this.password = '';
-    this.age = -1;
-    this.isDeleted = false;
+    this.id = user?.id || '';
+    this.login = user?.login || '';
+    this.password = user?.password || '';
+    this.age = user?.age || -1;
+    this.isDeleted = user?.isDeleted || false;
   }
   @PrimaryKey
   @AutoIncrement
   @Column
-  id: number
+  id: string
 
   @Column
   login: string

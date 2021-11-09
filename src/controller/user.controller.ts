@@ -1,20 +1,20 @@
 import express from 'express';
 import { NotFound } from '../http-exception';
 import { idValidation, userValidation } from '../validation/user.validation';
-import { saveUser, deleteUser, putUser, getAutoSuggestUsers } from '../service/user.service';
+import { findUser, saveUser, deleteUser, putUser, getAutoSuggestUsers } from '../service/user.service';
 import User from '../entity/user.entity';
 
 const router = express.Router();
 
-router.get('/user/:id', idValidation, (req, res) => {
+router.get('/user/:id', idValidation, (req, res, next) => {
   const { id } = req.params;
-  res.send(User.fineOne({ where: { id } }));
+  findUser(id, req, res, next);
 });
 
 //  http://localhost:3000/user?subString=a&limit=2
-router.get('/user', (req, res) => {
+router.get('/user', (req, res, next) => {
   const { subString, limit } = req.query;
-  getAutoSuggestUsers(JSON.stringify(subString), JSON.stringify(limit), res);
+  getAutoSuggestUsers(JSON.stringify(subString), JSON.stringify(limit), res, next);
 });
 
 router.post('/user', userValidation, (req, res, next) => {
