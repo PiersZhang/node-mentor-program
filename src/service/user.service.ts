@@ -4,7 +4,7 @@ import { orderBy, slice } from 'lodash';
 import { IUserInfo, IUser } from '../interface/user.interface';
 import { BadRequest, HttpException, NotFound } from '../http-exception';
 // import { getAll, saveItem, findItem, deleteItem, putItem, findItemByName } from './mock';
-import User from '../entity/user.entity';
+import { User } from '../entity/user.entity';
 
 const findUser = (id: string, req: express.Request, res: express.Response, next: express.NextFunction): void => {
   User.findOne({ where: { id } }).then((user) => {
@@ -61,7 +61,7 @@ const getAutoSuggestUsers = (loginSubstring: string, limit: string, res: express
   User.findAll().then((users) => {
     let suggestUsers = [];
     users.forEach((item) => {
-      if (item.login.includes(loginSubstring)) {
+      if (item?.login?.includes(loginSubstring)) {
         suggestUsers.push(item);
       }
     });

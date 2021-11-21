@@ -1,10 +1,9 @@
-import express from 'express';
 import { NotFound } from '../http-exception';
 import { idValidation, userValidation } from '../validation/user.validation';
 import { findUser, saveUser, deleteUser, putUser, getAutoSuggestUsers } from '../service/user.service';
-import User from '../entity/user.entity';
+import { User } from '../entity/user.entity';
+import { router } from './index.controller';
 
-const router = express.Router();
 
 router.get('/user/:id', idValidation, (req, res, next) => {
   const { id } = req.params;
@@ -30,10 +29,14 @@ router.delete('/user/:id', idValidation, (req, res, next) => {
   deleteUser(id, req, res, next);
 });
 
-router.get('/getAll', async (req, res) => {
-  const user = await User.findAll();
-  res.send(user);
+router.get('/getAll', (req, res) => {
+  User.findAll().then((user) => {
+    res.send(user);
+  }).catch((e) => {
+    console.log(e);
+  });
 });
+
 
 router.get('*', (req, res, next) => {
   next(new NotFound());

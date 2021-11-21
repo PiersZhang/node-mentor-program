@@ -1,33 +1,33 @@
 
-import { Column, PrimaryKey, Model, Table, AutoIncrement } from 'sequelize-typescript';
-import { IUser } from '../interface/user.interface';
-
-@Table
-class User extends Model {
-  constructor(user?: IUser) {
-    super();
-    this.id = user?.id || '';
-    this.login = user?.login || '';
-    this.password = user?.password || '';
-    this.age = user?.age || -1;
-    this.isDeleted = user?.isDeleted || false;
-  }
+import { Column, PrimaryKey, Model, Table, AutoIncrement, HasMany } from 'sequelize-typescript';
+import { IGroup } from '../interface/group.interface';
+import { Group } from './group.entity';
+// @Scopes({
+//   withGroup: {
+//     include: [{ model: () => Group }]
+//   }
+// })
+@Table({ freezeTableName: true })
+export class User extends Model {
   @PrimaryKey
   @AutoIncrement
   @Column
-  id: string
+  id!: string
 
   @Column
-  login: string
+  login!: string
 
   @Column
-  password: string
+  password!: string
 
   @Column
-  age: number
+  age!: number
 
   @Column
-  isDeleted: boolean
+  isDeleted!: boolean
+
+  @HasMany(() => Group)
+  // @Column
+  group?: string[];
 }
-export default User;
 
