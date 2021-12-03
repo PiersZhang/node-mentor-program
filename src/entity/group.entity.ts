@@ -1,23 +1,23 @@
-import { Column, PrimaryKey, Model, Table, AutoIncrement, HasMany } from 'sequelize-typescript';
+import { Column, PrimaryKey, Model, Table, AutoIncrement, BelongsToMany, HasMany } from 'sequelize-typescript';
 import { IPermission } from '../interface/group.interface';
-import { IUser } from '../interface/user.interface';
 import { User } from './user.entity';
+import { UserGroup } from './user-group.entity';
+import { Permission } from './permission.entity';
 
 @Table
 export class Group extends Model {
   @PrimaryKey
   @AutoIncrement
   @Column
-  id: string | undefined
+  id!: string;
 
   @Column
-  name: string | undefined
+  name!: string
 
-  @Column
-  permissions: IPermission[] | undefined
+  @HasMany(() => Permission)
+  permissions!: IPermission[]
 
-  @HasMany(() => User)
-//  @Column
+  @BelongsToMany(() => User, () => UserGroup)
   users?: string[];
 }
 

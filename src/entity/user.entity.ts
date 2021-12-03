@@ -1,12 +1,8 @@
 
-import { Column, PrimaryKey, Model, Table, AutoIncrement, HasMany } from 'sequelize-typescript';
-import { IGroup } from '../interface/group.interface';
+import { Column, PrimaryKey, Model, Table, AutoIncrement, BelongsToMany } from 'sequelize-typescript';
 import { Group } from './group.entity';
-// @Scopes({
-//   withGroup: {
-//     include: [{ model: () => Group }]
-//   }
-// })
+import { UserGroup } from './user-group.entity';
+
 @Table({ freezeTableName: true })
 export class User extends Model {
   @PrimaryKey
@@ -26,8 +22,7 @@ export class User extends Model {
   @Column
   isDeleted!: boolean
 
-  @HasMany(() => Group)
-  // @Column
+  @BelongsToMany(() => Group, () => UserGroup)
   group?: string[];
 }
 
