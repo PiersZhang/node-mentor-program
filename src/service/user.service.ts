@@ -4,7 +4,7 @@ import { orderBy, slice } from 'lodash';
 import { IUserInfo, IUser } from '../interface/user.interface';
 import { BadRequest, HttpException, NotFound } from '../http-exception';
 // import { getAll, saveItem, findItem, deleteItem, putItem, findItemByName } from './mock';
-import { User } from '../entity/user.entity';
+import { User } from '../model/user.model';
 
 const findUser = (id: string, req: express.Request, res: express.Response, next: express.NextFunction): void => {
   User.findOne({ where: { id } }).then((user) => {
