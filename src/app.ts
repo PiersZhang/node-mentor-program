@@ -1,10 +1,10 @@
 import express from 'express';
 import errorMiddleware from './middleware/error-middleware';
-// import router from './task2/index';
+import sequelize from './db/index';
 import router from './controller/user.controller';
+// import router from './task2/index';
 // import { User } from './entity/user.entity';
 // import { Group } from './entity/group.entity';
-import sequelize from './db/index';
 
 const app = express();
 sequelize.sync({ force: true }).then(() => {
