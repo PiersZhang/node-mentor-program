@@ -1,7 +1,7 @@
 import { NotFound } from '../http-exception';
 import { idValidation, userValidation } from '../validation/user.validation';
 import { findUser, saveUser, deleteUser, putUser, getAutoSuggestUsers } from '../service/user.service';
-import { User } from '../entity/user.entity';
+import { User } from '../model/user.model';
 import { router } from './index.controller';
 
 

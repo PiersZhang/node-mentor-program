@@ -1,6 +1,6 @@
 import { Column, Model, Table, ForeignKey } from 'sequelize-typescript';
-import { User } from './user.entity';
-import { Group } from './group.entity';
+import { User } from './user.model';
+import { Group } from './group.model';
 
 @Table
 export class UserGroup extends Model {

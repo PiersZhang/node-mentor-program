@@ -1,12 +1,11 @@
 
-import { Column, PrimaryKey, Model, Table, AutoIncrement, BelongsToMany } from 'sequelize-typescript';
-import { Group } from './group.entity';
-import { UserGroup } from './user-group.entity';
+import { Column, PrimaryKey, Model, Table, BelongsToMany } from 'sequelize-typescript';
+import { Group } from './group.model';
+import { UserGroup } from './user-group.model';
 
 @Table({ freezeTableName: true })
 export class User extends Model {
   @PrimaryKey
-  @AutoIncrement
   @Column
   id!: string
 

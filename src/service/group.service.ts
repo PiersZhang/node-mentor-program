@@ -1,7 +1,7 @@
 import express from 'express';
 // import { v4 as uuidv4 } from 'uuid';
 import { NotFound, BadRequest, HttpException } from '../http-exception';
-import { Group } from '../entity/group.entity';
+import { Group } from '../model/group.model';
 // import { IGroup } from '../interface/group.interface';
 
 
