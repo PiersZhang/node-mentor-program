@@ -48,6 +48,6 @@ app.use(expressWinston.errorLogger({
 
 app.use(errorMiddleware);
 
-
 app.listen(3000);
+export { app };
 

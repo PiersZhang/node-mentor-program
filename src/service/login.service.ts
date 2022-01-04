@@ -1,9 +1,11 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import config from 'config';
 import { BadRequest } from '../http-exception';
 import { User } from '../model/user.model';
-import { jwtConfig } from '../config/config';
+import { IJwtConfig } from '../interface/config.interface';
 
+const jwtConfig: IJwtConfig = config.get('jwtConfig');
 const login = (req: express.Request, res: express.Response, next: express.NextFunction): void => {
   User.findOne({ where: { login:  req.body.username } }).then((user) => {
     if (req.body.password === user?.password) {
