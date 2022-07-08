@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+import config from 'config';
 import { HttpException } from '../http-exception/index';
-import { jwtConfig } from '../config/config';
+import { IJwtConfig } from '../interface/config.interface';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function jwtMiddleware(request: Request, response: Response, next: NextFunction): void {
   const token = request.header('authorization');
+  const jwtConfig: IJwtConfig = config.get('jwtConfig');
   if (!token) {
     throw new HttpException({
       status: 401,

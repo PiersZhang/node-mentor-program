@@ -1,0 +1,12 @@
+{
+  "jwtConfig": {
+    "secret": "piersjwtsecret",
+    "algorithms": "['HS256']"
+  },
+  "dbConfig": {
+    "host": "localhost",
+    "dialect": "postgres",
+    "dbName": "piersdb",
+    "pwd": "123123"
+  }
+}
