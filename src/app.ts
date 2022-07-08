@@ -1,7 +1,9 @@
 import express from 'express';
+import cors from 'cors';
 import * as expressWinston from 'express-winston';
 import winston from 'winston';
 import errorMiddleware from './middleware/error-middleware';
+import jwtMiddleware from './middleware/jwt';
 import sequelize from './db/index';
 import router from './controller/user.controller';
 // import router from './task2/index';
@@ -14,8 +16,9 @@ sequelize.sync({ force: true }).then(() => {
 }).catch((err) => {
   console.log(err);
 });
+app.use(cors());
 app.use(express.json());
-
+app.use(jwtMiddleware);
 app.use(expressWinston.logger({
   transports: [
     new winston.transports.Console()
